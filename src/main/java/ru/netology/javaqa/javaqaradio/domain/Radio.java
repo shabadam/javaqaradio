@@ -1,4 +1,5 @@
 package ru.netology.javaqa.javaqaradio.domain;
+
 public class Radio {
     private int currentStation;
 
@@ -23,7 +24,6 @@ public class Radio {
     }
 
     public void nextButton() {
-        setCurrentStation(currentStation);
 
         if (currentStation < 9) {
             currentStation++;
@@ -33,7 +33,6 @@ public class Radio {
     }
 
     public void prevButton() {
-        setCurrentStation(currentStation);
 
         if (currentStation > 0) {
             currentStation--;
@@ -53,7 +52,6 @@ public class Radio {
     }
 
     public void increaseVolume() {
-        setCurrentVolume(currentVolume);
 
         if (currentVolume < 100) {
             currentVolume++;
@@ -61,7 +59,6 @@ public class Radio {
     }
 
     public void reduceVolume() {
-        setCurrentVolume(currentVolume);
 
         if (currentVolume > 0) {
             currentVolume--;

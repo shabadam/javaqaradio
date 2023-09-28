@@ -1,4 +1,5 @@
 package ru.netology.javaqa.javaqaradio.domain;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
