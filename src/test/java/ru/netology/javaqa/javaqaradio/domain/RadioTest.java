@@ -33,12 +33,12 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextStation() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(5);
 
         rad.setCurrentStation();
         rad.nextButton();
 
-        Assertions.assertEquals(0, rad.getCurrentStation());
+        Assertions.assertEquals(5, rad.getCurrentStation());
     }
 
     @Test
