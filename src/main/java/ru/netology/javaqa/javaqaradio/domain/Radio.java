@@ -1,9 +1,25 @@
 package ru.netology.javaqa.javaqaradio.domain;
 
 public class Radio {
+
+    private int stationAmount;
     private int currentStation;
 
     private int currentVolume;
+
+    public Radio() {
+        this.stationAmount = 10;
+        this.currentStation = 9;
+    }
+
+    public Radio(int stationAmount) {
+        this.stationAmount = stationAmount;
+        this.currentStation = stationAmount - 1;
+    }
+
+    public int getStationAmount() {
+        return stationAmount;
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -13,22 +29,18 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentStation(int newCurrentRadioStation) {
-        if (newCurrentRadioStation < 0) {
-            return;
+    public void setCurrentStation() {
+        if (currentStation < 0) {
+            currentStation = 0;
         }
-        if (newCurrentRadioStation > 9) {
-            return;
-        }
-        currentStation = newCurrentRadioStation;
     }
 
     public void nextButton() {
 
-        if (currentStation < 9) {
-            currentStation++;
-        } else {
+        if (currentStation == 9) {
             currentStation = 0;
+        } else {
+            currentStation++;
         }
     }
 
