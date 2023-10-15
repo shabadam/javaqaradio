@@ -4,91 +4,71 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+
+    @Test
+    public void shouldSetStationAmount() {
+        Radio rad = new Radio(30);
+
+        Assertions.assertEquals(30, rad.getStationAmount());
+        Assertions.assertEquals(29, rad.getCurrentStation());
+    }
+
     @Test
     public void shouldSetStation() {
         Radio rad = new Radio();
 
-        rad.setCurrentStation(7);
+        rad.setCurrentStation();
 
-        int expected = 7;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldNotSetStationAboveMax() {
-        Radio rad = new Radio();
-
-        rad.setCurrentStation(14);
-
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(9, rad.getCurrentStation());
     }
 
     @Test
     public void shouldNotSetStationBelowMin() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(-5);
 
-        rad.setCurrentStation(-1);
+        rad.setCurrentStation();
 
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, rad.getCurrentStation());
     }
 
     @Test
     public void shouldSetNextStation() {
         Radio rad = new Radio();
 
+        rad.setCurrentStation();
         rad.nextButton();
 
-        int expected = 1;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, rad.getCurrentStation());
     }
 
     @Test
     public void shouldSetFirstStation() {
         Radio rad = new Radio();
 
-        rad.setCurrentStation(9);
+        rad.setCurrentStation();
         rad.nextButton();
 
-        int expected = 0;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(0, rad.getCurrentStation());
     }
 
     @Test
     public void shouldSetPrevStation() {
         Radio rad = new Radio();
 
-        rad.setCurrentStation(5);
+        rad.setCurrentStation();
         rad.prevButton();
 
-        int expected = 4;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(8, rad.getCurrentStation());
     }
 
     @Test
     public void shouldSetLastStation() {
-        Radio rad = new Radio();
+        Radio rad = new Radio(0);
 
 
         rad.prevButton();
 
-        int expected = 9;
-        int actual = rad.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(9, rad.getCurrentStation());
     }
 
     @Test
