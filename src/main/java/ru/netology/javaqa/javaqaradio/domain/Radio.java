@@ -4,17 +4,16 @@ public class Radio {
 
     private int stationAmount;
     private int currentStation;
-
     private int currentVolume;
 
     public Radio() {
         this.stationAmount = 10;
-        this.currentStation = 9;
+        this.currentStation = 0;
     }
 
     public Radio(int stationAmount) {
         this.stationAmount = stationAmount;
-        this.currentStation = stationAmount - 1;
+        this.currentStation = 0;
     }
 
     public int getStationAmount() {
@@ -29,15 +28,18 @@ public class Radio {
         return currentVolume;
     }
 
-    public void setCurrentStation() {
-        if (currentStation < 0) {
+    public void setCurrentStation(int newStation) {
+        if (newStation < 0) {
             currentStation = 0;
+        } else if (newStation >= stationAmount) {
+            currentStation = stationAmount - 1;
+        } else {
+            currentStation = newStation;
         }
     }
 
     public void nextButton() {
-
-        if (currentStation == 9) {
+        if (currentStation + 1 == stationAmount) {
             currentStation = 0;
         } else {
             currentStation++;
@@ -45,33 +47,30 @@ public class Radio {
     }
 
     public void prevButton() {
-
-        if (currentStation > 0) {
-            currentStation--;
+        if (currentStation == 0) {
+            currentStation = stationAmount - 1;
         } else {
-            currentStation = 9;
+            currentStation--;
         }
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume < 0) {
-            return;
+            currentVolume = 0;
+        } else if (newCurrentVolume > 100) {
+            currentVolume = 100;
+        } else {
+            currentVolume = newCurrentVolume;
         }
-        if (newCurrentVolume > 100) {
-            return;
-        }
-        currentVolume = newCurrentVolume;
     }
 
     public void increaseVolume() {
-
         if (currentVolume < 100) {
             currentVolume++;
         }
     }
 
     public void reduceVolume() {
-
         if (currentVolume > 0) {
             currentVolume--;
         }
